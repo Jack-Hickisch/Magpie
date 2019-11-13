@@ -27,16 +27,38 @@ public class Magpie3 {
 	 */
 	public String getResponse(String statement) {
 		String response = "";
-		if (statement.length() == 0) {
-			response = "Say something, please.";
-		} else if (findKeyword(statement, "no") >= 0) {
+		if (findKeyword(statement, "no") >= 0) {
 			response = "Why so negative?";
 		} else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
 				|| findKeyword(statement, "sister") >= 0
-				|| findKeyword(statement, "brother") >= 0) {
+				|| findKeyword(statement, "brother") >= 0)
 			response = "Tell me more about your family.";
-		} else {
+		else if (findKeyword(statement, "pie") >= 0)
+		{
+			response = "I like pi more than pie";
+		}
+		else if (findKeyword(statement, "where") >= 0)
+		{
+			response = "I am not knowledgable with the location of things";
+		}
+		else if (findKeyword(statement, "keyboard") >= 0)
+		{
+			response = "I wish I could type but I can only respond";
+		}
+		else if (findKeyword(statement, "dog") >= 0 || findKeyword(statement, "cat") >= 0)
+		{
+			response = "Tell me more about your pets";
+		}
+		else if (findKeyword(statement, "Padjen") >= 0)
+		{
+			response = "He sounds like a good teacher.";
+		}
+		else if (statement.trim().length() == 0)
+		{
+			response = "Say something, please";
+		}
+		else {
 			response = getRandomResponse();
 		}
 		return response;
@@ -78,14 +100,15 @@ public class Magpie3 {
 						psn + goal.length() + 1);
 			}
 
+			// this is where that comment is
 			// If before and after aren't letters, we've
 			// found the word
-			if (((before.compareTo("a") < 0) || (before.compareTo("z") > 0)) // before
+			if (((before.compareTo("a") < 0) || (before.compareTo("z") > 0)) // before 
 																				// is
 																				// not
 																				// a
 																				// letter
-					&& ((after.compareTo("a") < 0) || (after.compareTo("z") > 0))) {
+					&& ((after.compareTo("a") < 0) || (after.compareTo("z") > 0))) { // basically it's seeing if the letters are in the alphabet
 				return psn;
 			}
 
